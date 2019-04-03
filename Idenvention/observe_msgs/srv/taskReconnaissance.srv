@@ -1,0 +1,9 @@
+# two parts: a request and a response. The two parts are separated by a '---'
+Header header
+
+uint32 frequency
+uint32 resolution # pixel per meter
+float64 time # mimutes to mission
+uint32 maxUS # maximal number of unmanned systems
+---
+bool result

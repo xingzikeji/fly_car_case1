@@ -1,0 +1,8 @@
+# two parts: a request and a response. The two parts are separated by a '---'
+
+Header header
+
+string plugin_type
+string plugin_name
+---
+bool result

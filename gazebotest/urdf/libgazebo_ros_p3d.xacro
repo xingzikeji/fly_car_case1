@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ros plugin——libgazebo_ros_p3d -->
+  <xacro:macro name="libgazebo_ros">
+     <gazebo>
+       <plugin name="libgazebo_ros" filename="libgazebo_ros_p3d.so">
+         <alwaysOn>true</alwaysOn>
+         <updateRate>50.0</updateRate>
+         <bodyName>base_link</bodyName>
+         <topicName>ground_truth/state</topicName>
+         <gaussianNoise>0.01</gaussianNoise>
+         <frameName>world</frameName>
+         <xyzOffsets>0 0 0</xyzOffsets>
+         <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
+    </gazebo>
+
+  </xacro:macro>      
+           
+</robot>

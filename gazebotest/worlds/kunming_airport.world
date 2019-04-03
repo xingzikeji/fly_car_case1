@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.4"> 
+ <world name="default">  
+ <!--   <include>     
+      <uri>model://ground_plane</uri>   
+   </include>   -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+    <include>   
+       <uri>model://kunming_airport</uri>  
+    </include> 
+
+    <model name="drone_true1">
+    <include>
+       <uri>model://drone_true</uri>
+       <pose>18.0 0 0.1 0 0 0</pose>
+    </include>
+    </model>
+ </world>
+</sdf>
+

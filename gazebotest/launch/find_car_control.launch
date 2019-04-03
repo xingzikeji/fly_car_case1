@@ -1,0 +1,58 @@
+
+
+<launch>
+   <arg name="mav_name"  default="fixedwing"/>
+
+     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+       <arg name="paused" value="true"/>
+       <arg name="gui" value="true"/>
+       <arg name="verbose" value="false"/>
+       <arg name="debug" value="false"/>
+       <arg name="world_name" value="$(find gazebotest)/worlds/kunming_airport.world"/> 
+     </include>
+   
+
+   <!--加载hector_quator 四旋翼飞行器-->
+  <group ns="bebop_1">
+            <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_with_cam1.gazebo.xacro"/> 
+        <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+            <arg name="name" value="bebop_1" />
+            <arg name="tf_prefix" value="bebop_1" />
+            <arg name="model" value="$(arg model)" />
+            <arg name="x" value="0.0" />
+            <arg name="y" value="0.0" />
+        </include>
+
+        <node name="videosub" pkg="videoread" type="video_sub"/> 
+        <node name="rosplane_visual_controller" pkg="rosplane" type="rosplane_visual_controller"/> 
+        <node name="ipathplanner" pkg="Identification" type="rosident_path_manager28"/> 
+        </group>
+
+  <!--加载小车模型-->
+  <group ns="car">
+      <!-- <param name="/use_sim_time" value="false" /> -->
+
+      <arg name="model" default="$(find xacro)/xacro --inorder '$(find gazebotest)/urdf/my_car.xacro'" />
+      <param name="robot_description" command="$(arg model)" />
+
+      <!--加载arbotix_ros控制版-->
+      <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+          <rosparam file="$(find gazebotest)/config/fake_mrobot_arbotix.yaml" command="load" />
+          <param name="sim" value="true"/>
+      </node>
+    
+      <!--加载发布节点状态的节点-->
+      <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+      <!--加载发布机器状态的节点-->
+      <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+          <param name="publish_frequency" type="double" value="20.0" />
+      </node>
+
+      <!--在Gazebo中加载出来xacro文件-->
+      <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -model robot1 -param robot_description -z 0.05 -y 2.0 -x 3.0">  
+      </node>
+
+  </group>
+
+</launch>

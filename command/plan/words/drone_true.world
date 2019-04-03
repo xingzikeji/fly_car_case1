@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+
+    <!-- 这个是靶子 -->
+    <!-- <model name="drone_true1">
+    <include>
+      <uri>model://drone_true</uri>
+<pose>18.0 0 0.1 0 0 0</pose>
+    </include>
+    </model> -->
+
+
+
+
+
+
+  <!--  <model name="drone_true2">
+<include>
+      <uri>model://drone_true</uri>
+<pose>30.0 0 0 0 0 0</pose>
+    </include>
+</model>
+    <model name="drone_true3">
+<include>
+      <uri>model://drone_true</uri>
+<pose>50.0 0 0 0 0 0</pose>
+    </include>
+</model>-->
+<!--<physics type='ode'>
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>0</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>-->
+
+  </world>
+</sdf>
