@@ -1,11 +1,4 @@
 1、实现飞机起飞，搜寻小车（带有颜色的小车），识别小车，飞机在小车上空盘旋。
-2、飞机跟随小车移动。做事包车飞机在小车的上空盘旋
-
-roslaunch gazebotest find_car_control.launch
-
-3、控制在小车上空盘旋的主要代码是 rosplane/src/visual_controller_base.cpp 
-                          和 rosplane/src/visualler_example.cpp
-
-
-4、该包中使用到openCV的知识去识别颜色物体。主要openCV的版本选择，这里选择的是opencv-3.4.2，
-                         同时需要opencv_contrib-3.4.2
+2、飞机跟随小车移动。做事包车飞机在小车的上空盘旋  roslaunch gazebotest find_car_control.launch
+3、控制在小车上空盘旋的主要代码是 rosplane/src/visual_controller_base.cpp 和 rosplane/src/visualler_example.cpp
+4、该包中使用到openCV的知识去识别颜色物体。主要openCV的版本选择，这里选择的是opencv-3.4.2，同时需要opencv_contrib-3.4.2
